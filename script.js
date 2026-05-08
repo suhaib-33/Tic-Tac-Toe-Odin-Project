@@ -14,7 +14,7 @@ const winConditions = [
 ]
 
 
-let options = ["", "", "", "", "", "", "", "",]
+let options = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let running = false;
 
@@ -36,7 +36,6 @@ function cellClicked () {
     }
 
     updateCell(this, cellIndex);
-    changePlayer()
     checkWinner();
 }
 
@@ -69,17 +68,21 @@ function checkWinner() {
     }
 
     if (roundWon) {
-        statusText.textContent = `${currentPlayer} turn's`;
+        statusText.textContent = `${currentPlayer} wins`;
         running = false;
+    } else if(!options.includes("")) {
+        statusText.textContent = `Draw!`;
+        running = false;
+    } else {
+        changePlayer();
     }
-
-
-
-
-
-    
 }
 
 function restartGame() {
- alert("nigga")
+    currentPlayer = "X";
+    options = ["", "", "", "", "", "", "", "", ""]
+    statusText.textContent = `${currentPlayer} turn's`
+    cells.forEach(cell => cell.textContent = "");
+    running = true;
+
 }
