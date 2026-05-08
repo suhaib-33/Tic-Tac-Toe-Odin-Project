@@ -62,10 +62,22 @@ function checkWinner() {
 
         if(cellA == "" || cellB == "" || cellC == "") {
             continue;
+        } else if (cellA === cellB && cellB === cellC) {
+            roundWon = true;
+            break;
         }
-
     }
 
+    if (roundWon) {
+        statusText.textContent = `${currentPlayer} turn's`;
+        running = false;
+    }
+
+
+
+
+
+    
 }
 
 function restartGame() {
